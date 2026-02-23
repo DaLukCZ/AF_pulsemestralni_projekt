@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UTB.Library.Contracts\UTB.Minute.Contracts.csproj" />
+    <ProjectReference Include="..\UTB.Library.Db\UTB.Minute.Db.csproj" />
+    <ProjectReference Include="..\UTB.Library.ServiceDefaults\UTB.Minute.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+</Project>

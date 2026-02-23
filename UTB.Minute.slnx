@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="../UTB.Library/UTB.Library.AppHost/UTB.Minute.AppHost.csproj" />
+  <Project Path="../UTB.Library/UTB.Library.Contracts/UTB.Minute.Contracts.csproj" />
+  <Project Path="../UTB.Library/UTB.Library.Db/UTB.Minute.Db.csproj" />
+  <Project Path="../UTB.Library/UTB.Library.DbManager/UTB.Minute.DbManager.csproj" />
+  <Project Path="../UTB.Library/UTB.Library.ServiceDefaults/UTB.Minute.ServiceDefaults.csproj" />
+  <Project Path="../UTB.Library/UTB.Library.Tests/UTB.Minute.Tests.csproj" />
+  <Project Path="../UTB.Library/UTB.Library.WebApi/UTB.Minute.WebApi.csproj" />
+</Solution>
