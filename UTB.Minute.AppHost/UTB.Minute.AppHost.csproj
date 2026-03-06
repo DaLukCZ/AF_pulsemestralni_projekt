@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UTB.Library.DbManager\UTB.Minute.DbManager.csproj" />
-    <ProjectReference Include="..\UTB.Library.WebAPI\UTB.Minute.WebApi.csproj" />
+    <ProjectReference Include="..\UTB.Minute.DbManager\UTB.Minute.DbManager.csproj" />
+    <ProjectReference Include="..\UTB.Minute.WebAPI\UTB.Minute.WebApi.csproj" />
   </ItemGroup>
 
 </Project>

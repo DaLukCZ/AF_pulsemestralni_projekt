@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UTB.Library.Db\UTB.Minute.Db.csproj" />
+    <ProjectReference Include="..\UTB.Minute.Db\UTB.Minute.Db.csproj" />
+    <ProjectReference Include="..\UTB.Minute.ServiceDefaults\UTB.Minute.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

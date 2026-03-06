@@ -14,7 +14,6 @@ else
                       .WithPgAdmin(c =>
                       {
                           c.WithLifetime(ContainerLifetime.Persistent);
-                          c.WithImage("dpage/pgadmin4:latest");
                       })
                       .WithDataVolume()
                       .WithLifetime(ContainerLifetime.Persistent);

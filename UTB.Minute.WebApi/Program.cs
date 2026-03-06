@@ -16,28 +16,28 @@ app.MapDefaultEndpoints();
 app.UseHttpsRedirection();
 
 // Foods endpoints
-app.MapPost("/foods", WebApiV1.CreateFood);
-app.MapGet("/foods", WebApiV1.GetFoods);
-app.MapGet("/foods/{id:int}", WebApiV1.GetFoodById);
-app.MapPut("/foods/{id:int}", WebApiV1.UpdateFood);
-app.MapPut("/foods/{id:int}/deactivate", WebApiV1.DeactivateFood);
+app.MapPost("/foods", WebApi.CreateFood);
+app.MapGet("/foods", WebApi.GetFoods);
+app.MapGet("/foods/{id:int}", WebApi.GetFoodById);
+app.MapPut("/foods/{id:int}", WebApi.UpdateFood);
+app.MapPut("/foods/{id:int}/deactivate", WebApi.DeactivateFood);
 
 // Menu endpoints
-app.MapPost("/menu-items", WebApiV1.CreateMenuItem);
-app.MapGet("/menu-items", WebApiV1.GetMenuItems);
-app.MapGet("/menu-items/today", WebApiV1.GetTodayMenuItems);
-app.MapPut("/menu-items/{id:int}", WebApiV1.UpdateMenuItem);
-app.MapDelete("/menu-items/{id:int}", WebApiV1.DeleteMenuItem);
+app.MapPost("/menu-items", WebApi.CreateMenuItem);
+app.MapGet("/menu-items", WebApi.GetMenuItems);
+app.MapGet("/menu-items/today", WebApi.GetTodayMenuItems);
+app.MapPut("/menu-items/{id:int}", WebApi.UpdateMenuItem);
+app.MapDelete("/menu-items/{id:int}", WebApi.DeleteMenuItem);
 
 // Orders endpoints
-app.MapPost("/orders", WebApiV1.CreateOrder);
-app.MapGet("/orders", WebApiV1.GetOrders);
-app.MapGet("/orders/open", WebApiV1.GetOpenOrders);
-app.MapPut("/orders/{id:int}/status", WebApiV1.UpdateOrderStatus);
+app.MapPost("/orders", WebApi.CreateOrder);
+app.MapGet("/orders", WebApi.GetOrders);
+app.MapGet("/orders/open", WebApi.GetOpenOrders);
+app.MapPut("/orders/{id:int}/status", WebApi.UpdateOrderStatus);
 
 app.Run();
 
-public static class WebApiV1
+public static class WebApi
 {
     // Foods
     public static async Task<Created<FoodDto>> CreateFood(CreateFoodDto dto, MinuteDbContext db)

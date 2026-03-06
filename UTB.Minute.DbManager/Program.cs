@@ -21,29 +21,101 @@ app.MapPost("/reset-db", async (MinuteDbContext db) =>
     await db.Database.EnsureCreatedAsync();
 
     // Seed test data
-    var food1 = new Food { Name = "Chicken schnitzel", Description = "Served with potatoes", Price = 129m, IsActive = true };
-    var food2 = new Food { Name = "Pasta carbonara", Description = "Classic Italian pasta", Price = 119m, IsActive = true };
-    var food3 = new Food { Name = "Caesar salad", Description = "Chicken, croutons, parmesan", Price = 99m, IsActive = true };
-    var food4 = new Food { Name = "Goulash", Description = "Beef goulash with bread", Price = 135m, IsActive = false }; // inactive example
+    var foods = new[] {
+    new Food {
+      Name = "Dürüm Kebab",
+        Description = "Beef kebab in tortilla with vegetables and herb sauce",
+        Price = 129m,
+        IsActive = true
+    },
+    new Food {
+      Name = "Semolina porridge",
+        Description = "Sweet semolina porridge with butter and cocoa",
+        Price = 59m,
+        IsActive = true
+    },
+    new Food {
+      Name = "Pancakes with jam",
+        Description = "Three pancakes served with strawberry jam and whipped cream",
+        Price = 89m,
+        IsActive = true
+    },
+    new Food {
+      Name = "Belgian waffles",
+        Description = "Waffles with whipped cream and chocolate topping",
+        Price = 95m,
+        IsActive = true
+    }
+    };
 
-    db.Foods.AddRange(food1, food2, food3, food4);
+    db.Foods.AddRange(foods);
     await db.SaveChangesAsync();
 
-    var today = DateOnly.FromDateTime(DateTime.UtcNow);
+    var kebab = foods[0];
+    var semolinaPorridge = foods[1];
+    var pancakes = foods[2];
+    var waffles = foods[3];
+
+    var today = DateOnly.FromDateTime(DateTime.Now);
     var tomorrow = today.AddDays(1);
 
-    var menu1 = new MenuItem { Date = today, FoodId = food1.Id, AvailablePortions = 10 };
-    var menu2 = new MenuItem { Date = today, FoodId = food2.Id, AvailablePortions = 0 };  // sold out example
-    var menu3 = new MenuItem { Date = today, FoodId = food3.Id, AvailablePortions = 5 };
-    var menu4 = new MenuItem { Date = tomorrow, FoodId = food1.Id, AvailablePortions = 8 };
+    var menuItems = new[]
+    {
+        new MenuItem
+        {
+            Date = today,
+            FoodId = kebab.Id,
+            AvailablePortions = 10
+        }, // kebab
 
-    db.MenuItems.AddRange(menu1, menu2, menu3, menu4);
+        new MenuItem
+        {
+            Date = today,
+            FoodId = pancakes.Id,
+            AvailablePortions = 6
+        }, // pancakes
+
+        new MenuItem
+        {
+            Date = today,
+            FoodId = waffles.Id,
+            AvailablePortions = 0
+        }, // waffles (sold out)
+
+        new MenuItem
+        {
+            Date = tomorrow,
+            FoodId = semolinaPorridge.Id,
+            AvailablePortions = 8
+        } // semolina porridge
+    };
+
+    db.MenuItems.AddRange(menuItems);
     await db.SaveChangesAsync();
 
-    var order1 = new Order { MenuItemId = menu1.Id, Status = OrderStatus.Preparing };
-    var order2 = new Order { MenuItemId = menu3.Id, Status = OrderStatus.Ready };
-    var order3 = new Order { MenuItemId = menu1.Id, Status = OrderStatus.Cancelled };
-    var order4 = new Order { MenuItemId = menu3.Id, Status = OrderStatus.Completed };
+    var order1 = new Order
+    {
+        MenuItemId = menuItems[0].Id,
+        Status = OrderStatus.Preparing
+    };
+
+    var order2 = new Order
+    {
+        MenuItemId = menuItems[1].Id,
+        Status = OrderStatus.Ready
+    };
+
+    var order3 = new Order
+    {
+        MenuItemId = menuItems[0].Id,
+        Status = OrderStatus.Cancelled
+    };
+
+    var order4 = new Order
+    {
+        MenuItemId = menuItems[3].Id,
+        Status = OrderStatus.Completed
+    };
 
     db.Orders.AddRange(order1, order2, order3, order4);
     await db.SaveChangesAsync();
